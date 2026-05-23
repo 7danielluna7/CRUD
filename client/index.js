@@ -2,7 +2,7 @@ import express from 'express'
 import * as db from './queries.js'
 
 const app = express()
-const port = 3000
+const PORT = process.env.PORT || 3000
 
 app.use(express.json())
 app.use(
@@ -23,6 +23,6 @@ app.delete('/users/:id', db.deleteUser)
 app.use((req, res) => {
     res.status(404).json({ error: "Route not found" })
   })
-app.listen(port, () => {
-  console.log(`App running on port ${port}.`)
+app.listen(PORT, () => {
+  console.log(`App running on port ${PORT}.`)
 })
